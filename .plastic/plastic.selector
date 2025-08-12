@@ -1,4 +1,0 @@
-repository "Motorcycle Arcade/Motorcycle Arcade@18967052128345@cloud"
-  path "/"
-    br "/main"
-    co "/main"
