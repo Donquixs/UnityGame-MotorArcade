@@ -38,8 +38,21 @@ public class BrushSpawner : MonoBehaviour
         float height = terrain.SampleHeight(worldPosition);
         Vector3 spawnPos = new Vector3(worldPosition.x, height + terrainPos.y, worldPosition.z);
 
-        GameObject tree = (GameObject)UnityEditor.PrefabUtility.InstantiatePrefab(treePrefab);
-        tree.transform.position = spawnPos;
+        GameObject tree;
+
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            // Supaya tetap jadi prefab instance saat di editor
+            tree = (GameObject)PrefabUtility.InstantiatePrefab(treePrefab);
+            tree.transform.position = spawnPos;
+        }
+        else
+#endif
+        {
+            // Saat play mode, pakai Instantiate biasa
+            tree = Instantiate(treePrefab, spawnPos, Quaternion.identity);
+        }
 
         // Opsional: mengikuti kontur permukaan terrain
         Vector3 normal = terrain.terrainData.GetInterpolatedNormal(
@@ -54,6 +67,7 @@ public class BrushSpawner : MonoBehaviour
 
         tree.transform.SetParent(this.transform);
     }
+
 
     public void RemoveTreeNear(Vector3 worldPosition, float radius)
     {
