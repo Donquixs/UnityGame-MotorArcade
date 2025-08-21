@@ -149,7 +149,7 @@ public class LapTimer : MonoBehaviour
             // 3. Tunggu sampai waktu tersisa tinggal 2 detik
 
             double videoLength = introVideoPlayer.length;
-            while (introVideoPlayer.time < videoLength -2f)
+            while (introVideoPlayer.time < videoLength -0.5f)
             {
                 yield return null;
             }
