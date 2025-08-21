@@ -7,7 +7,11 @@ PhysicMaterial:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Friction
+<<<<<<< Updated upstream
   dynamicFriction: 0.96082747
+=======
+  dynamicFriction: 0.9591028
+>>>>>>> Stashed changes
   staticFriction: 1
   bounciness: 0
   frictionCombine: 3
